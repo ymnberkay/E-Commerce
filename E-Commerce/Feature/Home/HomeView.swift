@@ -53,11 +53,11 @@ struct HomeView: View {
                 case .search:
                     SearchView()
                 case .profile:
-                    TestView()
+                    SearchView()
                 case .settings:
-                    TestView1()
+                    SearchView()
                 case .help:
-                    TestView()
+                    SearchView()
                 }
             }
         }

@@ -24,6 +24,9 @@
 		CE85EB102CCD06A700F881BD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB0F2CCD06A700F881BD /* LoginViewModel.swift */; };
 		CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB112CCD0B8100F881BD /* PrimaryButton.swift */; };
 		CE85EB142CCD28A300F881BD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB132CCD28A300F881BD /* SignupView.swift */; };
+		CEC385F82CD2C69100A662BD /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC385F72CD2C69100A662BD /* InputTextField.swift */; };
+		CEC385FE2CD2CD6900A662BD /* star-filled.svg in Resources */ = {isa = PBXBuildFile; fileRef = CEC385FD2CD2CD6900A662BD /* star-filled.svg */; };
+		CEC386002CD2CFC500A662BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC385FF2CD2CFC500A662BD /* SearchViewModel.swift */; };
 		CEF1646D2CCF860900D7E10C /* ScreenSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1646C2CCF860900D7E10C /* ScreenSizes.swift */; };
 		CEF1646F2CCF885000D7E10C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEF1646E2CCF885000D7E10C /* GoogleService-Info.plist */; };
 		CEF164722CCF88F900D7E10C /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF164712CCF88F900D7E10C /* SignupViewModel.swift */; };
@@ -32,8 +35,6 @@
 		CEFFB1D92CD0E9ED008407A8 /* SmallBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFB1D82CD0E9ED008407A8 /* SmallBanner.swift */; };
 		CEFFB1DB2CD0EF76008407A8 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFB1DA2CD0EF76008407A8 /* Destination.swift */; };
 		CEFFB1DE2CD0EFF0008407A8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFB1DD2CD0EFF0008407A8 /* SearchView.swift */; };
-		CEFFB1E02CD0F095008407A8 /* TestView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFB1DF2CD0F095008407A8 /* TestView1.swift */; };
-		CEFFB1E22CD0F09D008407A8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFB1E12CD0F09D008407A8 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,9 @@
 		CE85EB0F2CCD06A700F881BD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CE85EB112CCD0B8100F881BD /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		CE85EB132CCD28A300F881BD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		CEC385F72CD2C69100A662BD /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CEC385FD2CD2CD6900A662BD /* star-filled.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "star-filled.svg"; sourceTree = "<group>"; };
+		CEC385FF2CD2CFC500A662BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CEF1646C2CCF860900D7E10C /* ScreenSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizes.swift; sourceTree = "<group>"; };
 		CEF1646E2CCF885000D7E10C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEF164712CCF88F900D7E10C /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
@@ -64,8 +68,6 @@
 		CEFFB1D82CD0E9ED008407A8 /* SmallBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBanner.swift; sourceTree = "<group>"; };
 		CEFFB1DA2CD0EF76008407A8 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		CEFFB1DD2CD0EFF0008407A8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		CEFFB1DF2CD0F095008407A8 /* TestView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView1.swift; sourceTree = "<group>"; };
-		CEFFB1E12CD0F09D008407A8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				CE2998D92CD02F16007EF591 /* CategoryList.swift */,
 				CE2998DB2CD03192007EF591 /* Banner.swift */,
 				CEFFB1D82CD0E9ED008407A8 /* SmallBanner.swift */,
+				CEC385F72CD2C69100A662BD /* InputTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 		CE85EAF42CCCF65E00F881BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEC385FD2CD2CD6900A662BD /* star-filled.svg */,
 				CE85EAFB2CCCF8F900F881BD /* Images.xcassets */,
 				CE85EAFD2CCCF91400F881BD /* Colors.xcassets */,
 				CE85EAE72CCCF4C800F881BD /* Assets.xcassets */,
@@ -236,8 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				CEFFB1DD2CD0EFF0008407A8 /* SearchView.swift */,
-				CEFFB1DF2CD0F095008407A8 /* TestView1.swift */,
-				CEFFB1E12CD0F09D008407A8 /* TestView.swift */,
+				CEC385FF2CD2CFC500A662BD /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				CE85EAFC2CCCF8F900F881BD /* Images.xcassets in Resources */,
 				CE85EB062CCD004000F881BD /* DMSans.ttf in Resources */,
 				CE85EAFE2CCCF91400F881BD /* Colors.xcassets in Resources */,
+				CEC385FE2CD2CD6900A662BD /* star-filled.svg in Resources */,
 				CE85EAEB2CCCF4C800F881BD /* Preview Assets.xcassets in Resources */,
 				CE85EAE82CCCF4C800F881BD /* Assets.xcassets in Resources */,
 				CEF1646F2CCF885000D7E10C /* GoogleService-Info.plist in Resources */,
@@ -316,10 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFFB1E22CD0F09D008407A8 /* TestView.swift in Sources */,
 				CE85EAE62CCCF4C400F881BD /* ContentView.swift in Sources */,
 				CEFFB1DE2CD0EFF0008407A8 /* SearchView.swift in Sources */,
-				CEFFB1E02CD0F095008407A8 /* TestView1.swift in Sources */,
 				CEF1646D2CCF860900D7E10C /* ScreenSizes.swift in Sources */,
 				CE2998DA2CD02F16007EF591 /* CategoryList.swift in Sources */,
 				CE85EB0A2CCD019000F881BD /* Fonts.swift in Sources */,
@@ -330,8 +332,10 @@
 				CEF164742CCF8E7200D7E10C /* AuthButton.swift in Sources */,
 				CE2998D82CD02AFA007EF591 /* InputText.swift in Sources */,
 				CEF164722CCF88F900D7E10C /* SignupViewModel.swift in Sources */,
+				CEC385F82CD2C69100A662BD /* InputTextField.swift in Sources */,
 				CE2998D42CD02A01007EF591 /* HomeViewModel.swift in Sources */,
 				CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */,
+				CEC386002CD2CFC500A662BD /* SearchViewModel.swift in Sources */,
 				CEF1647B2CCF938600D7E10C /* HomeView.swift in Sources */,
 				CEFFB1DB2CD0EF76008407A8 /* Destination.swift in Sources */,
 				CE2998DC2CD03192007EF591 /* Banner.swift in Sources */,
