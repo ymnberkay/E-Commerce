@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject var viewModel = SearchViewModel()
+    @StateObject var viewModel: SearchViewModel
     var body: some View {
         VStack {
             NavigationTopBarView()
@@ -22,10 +22,10 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView()
+    SearchView(viewModel: SearchViewModel())
 }
 
-struct NavigationTopBarView: View {
+private struct NavigationTopBarView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         HStack {

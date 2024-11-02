@@ -10,9 +10,11 @@ import SwiftUI
 @main
 struct E_CommerceApp: App {
     @ObservedObject var viewModel = LoginViewModel()
+    @StateObject var homeViewModel =  HomeViewModel()
+    @StateObject var searchViewModel = SearchViewModel()
     var body: some Scene {
         WindowGroup {
-            LoginView(viewModel: viewModel)
+            LoginView(viewModel: viewModel,homeViewModel: homeViewModel, searchViewModel: searchViewModel)
         }
     }
 }

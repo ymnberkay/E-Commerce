@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject  var viewModel: LoginViewModel
+    @StateObject var homeViewModel: HomeViewModel
+    @StateObject var searchViewModel: SearchViewModel
     
     var body: some View {
         NavigationStack {
@@ -37,10 +39,10 @@ struct LoginView: View {
                             .font(.customFont(size: FontSizes.caption1))
                             .padding(.leading, 8)
                     }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal,10)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal,10)
                     
                     HStack{
                         Image("lock")
@@ -50,11 +52,11 @@ struct LoginView: View {
                             .font(.customFont(size: FontSizes.caption1))
                             .padding(.leading, 8)
                     }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal,10)
-                        .padding(.vertical,20)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.horizontal,10)
+                    .padding(.vertical,20)
                     
                     Button(action: {}, label: {
                         Text("Forgot Password")
@@ -86,15 +88,15 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.isLoggedIn){
-                SignupView()
+                SignupView(homeViewModel: homeViewModel, searchViewModel: searchViewModel)
             }
         }.onAppear(perform: {
-//            viewModel.isLoggedIn = false
+            viewModel.isLoggedIn = false
             print("login view appeared")
         })
     }
 }
 
 #Preview {
-    LoginView(viewModel: LoginViewModel())
+    LoginView(viewModel: LoginViewModel(), homeViewModel: HomeViewModel(), searchViewModel: SearchViewModel())
 }

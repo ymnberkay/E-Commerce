@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct SignupView: View {
-    @ObservedObject  var viewModel: SignupViewModel = SignupViewModel()
+    
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject  var viewModel: SignupViewModel = SignupViewModel()
+    @StateObject var homeViewModel: HomeViewModel
+    @StateObject var searchViewModel: SearchViewModel
+    
     
     var body: some View {
         ZStack {
@@ -37,10 +41,10 @@ struct SignupView: View {
                         .font(.customFont(size: FontSizes.caption1))
                         .padding(.leading, 8)
                 }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .padding(.horizontal,10)
                 
                 HStack{
                     Image("lock")
@@ -51,15 +55,15 @@ struct SignupView: View {
                         .font(.customFont(size: FontSizes.caption1))
                         .padding(.leading, 8)
                 }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal,10)
-                    .padding(.vertical,20)
-            
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+                .padding(.horizontal,10)
+                .padding(.vertical,20)
+                
                 PrimaryButton(title: "Sign Up", action: {
                     viewModel.isLoggedIn = true
-                                    })
+                })
                 .padding(.vertical,0)
                 
                 HStack(spacing: 15) {
@@ -92,15 +96,15 @@ struct SignupView: View {
                 
             }
         }.navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $viewModel.isLoggedIn) {
-            HomeView()
-        }
-
+            .navigationDestination(isPresented: $viewModel.isLoggedIn) {
+                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel)
+            }
+        
     }
 }
 
 
 
 #Preview {
-    SignupView(viewModel: SignupViewModel())
+    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(),searchViewModel: SearchViewModel())
 }

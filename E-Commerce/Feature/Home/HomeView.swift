@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
+    @StateObject var viewModel: HomeViewModel
+    @StateObject var searchViewModel: SearchViewModel
     var body: some View {
         VStack(spacing: -10) {
             TopView(viewModel: viewModel)
@@ -51,13 +52,13 @@ struct HomeView: View {
             if let destination = viewModel.selectedDestination {
                 switch destination {
                 case .search:
-                    SearchView()
+                    SearchView(viewModel: searchViewModel)
                 case .profile:
-                    SearchView()
+                    SearchView(viewModel: searchViewModel)
                 case .settings:
-                    SearchView()
+                    SearchView(viewModel: searchViewModel)
                 case .help:
-                    SearchView()
+                    SearchView(viewModel: searchViewModel)
                 }
             }
         }
@@ -69,7 +70,7 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel(), searchViewModel: SearchViewModel())
 }
 //MARK: -UI
 
