@@ -16,10 +16,12 @@ struct ExploreProductsView: View {
             Text("TMA Wireless")
             HorizontalStackScrollView(viewModel: viewModel)
             ItemsScrollView(viewModel: viewModel)
-                
             
-            
-        }.edgesIgnoringSafeArea(.bottom)
+        }
+        .sheet(isPresented: $viewModel.isSheetPresented) {
+            Filter(viewModel: viewModel)
+        }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -48,7 +50,7 @@ private struct HorizontalStackScrollView: View {
     @StateObject var viewModel: ExploreProductsViewModel
     var body: some View {
         HStack {
-            Button(action:  { }, label: {
+            Button(action:  {viewModel.isSheetPresented = true }, label: {
                 HStack {
                     Image("sliders")
                     Text("Filter")

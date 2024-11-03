@@ -11,27 +11,27 @@ struct Filter: View {
     @StateObject var viewModel: ExploreProductsViewModel
     var body: some View {
         VStack {
-            HStack {
-                Text("Filter")
-                Spacer()
-                Button(action: { }, label: {
-                    Image("x")
-                })
-            }.padding()
+            TopNavView()
             HStack {
                 Text("Category")
+                    .font(.customFont(size: FontSizes.headline))
                 Spacer()
             }.padding(.horizontal)
-            
             CategoryList()
+            SortByView(viewModel: viewModel)
+            PriceRatingView(viewModel: viewModel)
+            PrimaryButton(title: "Apply Filter") {
+                
+            }
             
-            HStack {
-                Text("Sort by")
-                Spacer()
-            }.padding(.horizontal)
-            
-            ExtractedView(viewModel: viewModel)
         }
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(16)
+        .shadow(radius: 10)
+        .padding(.top, 220)
+        .padding(.bottom)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -39,20 +39,66 @@ struct Filter: View {
     Filter(viewModel: ExploreProductsViewModel())
 }
 
-struct ExtractedView: View {
+private struct SortByView: View {
     @StateObject var viewModel: ExploreProductsViewModel
     var body: some View {
-        LazyVGrid(columns: viewModel.featureColumns) {
-            ForEach(viewModel.filterFeatures, id: \.self) { feature in
-                Text(feature)
-                    .padding()
-                    .background(viewModel.selectedItem == feature ? Color.caribbeanGreen : Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                    .onTapGesture {
-                        viewModel.selectedItem = feature
-                    }
-                
-            }
+        
+        VStack {
+            
+            HStack {
+                Text("Sort by")
+                    .font(.customFont(size: FontSizes.headline))
+                Spacer()
+            }.padding(.horizontal)
+            LazyVGrid(columns: viewModel.featureColumns) {
+                ForEach(viewModel.filterFeatures, id: \.self) { feature in
+                    Text(feature)
+                        .font(.customFont(size: FontSizes.headline))
+                        .padding()
+                        .background(viewModel.selectedItem == feature ? Color.primaryColor : Color.white)
+                        .cornerRadius(8)
+                        .onTapGesture {
+                            viewModel.selectedItem = feature
+                        }
+                    
+                }
+            }.padding()
         }
+    }
+}
+
+private struct PriceRatingView: View {
+    @StateObject var viewModel: ExploreProductsViewModel
+    var body: some View {
+        HStack {
+            Text("Price Rating")
+                .font(.customFont(size: FontSizes.headline))
+            Spacer()
+        }.padding(.horizontal)
+        HStack(spacing: 35) {
+            TextField("Low Price", text: $viewModel.lowPriceValue)
+                .font(.customFont(size: FontSizes.headline))
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))
+            
+            TextField("High Price", text: $viewModel.highPriceValue)
+                .font(.customFont(size: FontSizes.headline))
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))
+        }.padding()
+    }
+}
+
+private struct TopNavView: View {
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        HStack {
+            Text("Filter")
+                .font(.customFont(size: FontSizes.title1))
+            Spacer()
+            Button(action: { dismiss() }, label: {
+                Image("x")
+            })
+        }.padding()
     }
 }

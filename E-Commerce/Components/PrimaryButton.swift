@@ -15,13 +15,13 @@ struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .padding()
-                .frame(width: 326, height: 50)
+                .frame(maxWidth: .infinity)
                 .font(.customFont(size: FontSizes.headline))
                 .background(Color.primaryColor)
                 .foregroundColor(.white)
-                .cornerRadius(8)
+                .cornerRadius(10)
             
-        }
+        }.padding()
     }
 }
 
