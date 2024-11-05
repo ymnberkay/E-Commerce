@@ -12,4 +12,5 @@ enum Destination: Hashable {
     case settings
     case help
     case search
+    case seeAll
 }

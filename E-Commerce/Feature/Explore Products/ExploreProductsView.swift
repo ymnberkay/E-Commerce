@@ -12,12 +12,25 @@ struct ExploreProductsView: View {
     var body: some View {
         VStack {
             NavigationTopBarView()
-            Text("Headphone")
-            Text("TMA Wireless")
+            
+            HStack {
+                Text("Headphone")
+                    .font(.customFont(size: FontSizes.headline))
+                Spacer()
+            }.padding(.horizontal)
+                .padding(.bottom)
+            
+            HStack {
+                Text("TMA Wireless")
+                    .font(.customFont(size: FontSizes.title1))
+                Spacer()
+            }.padding(.horizontal)
+            
             HorizontalStackScrollView(viewModel: viewModel)
             ItemsScrollView(viewModel: viewModel)
             
         }
+        .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $viewModel.isSheetPresented) {
             Filter(viewModel: viewModel)
         }
@@ -30,11 +43,10 @@ struct ExploreProductsView: View {
 }
 
 
-private struct NavigationTopBarView: View {
-    @Environment(\.dismiss) private var dismiss
+private struct NavigationTopBarView: View {@Environment(\.presentationMode) var presentationMode
     var body: some View {
         HStack {
-            Button(action: {dismiss()}, label: {
+            Button(action: {presentationMode.wrappedValue.dismiss()}, label: {
                 Image("arrow-left")
             })
             Spacer()
@@ -54,6 +66,8 @@ private struct HorizontalStackScrollView: View {
                 HStack {
                     Image("sliders")
                     Text("Filter")
+                        .foregroundColor(.black)
+                        .font(.customFont(size: FontSizes.caption1))
                 }.padding()
                     .background(RoundedRectangle(cornerRadius: 8)
                         .stroke(.gray, lineWidth: 1.0))
@@ -62,6 +76,7 @@ private struct HorizontalStackScrollView: View {
                 HStack {
                     ForEach(viewModel.items, id: \.self) { item in
                         Text(item)
+                            .font(.customFont(size: FontSizes.caption1))
                             .padding()
                     }
                 }
@@ -81,14 +96,19 @@ private struct ItemsScrollView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: viewModel.columns, spacing: 16) {
                     ForEach(viewModel.itemss, id: \.self) { item in
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white)
-                            .frame(width: 155,height: 243)
-                            .overlay(
+                        Button(action: { }, label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.white)
+                                    .frame(width: 155,height: 243)
                                 Text("Item \(item)")
                                     .foregroundColor(.gray)
                                     .bold()
-                            )
+                            }
+                            
+                        })
+                        
+                        
                     }
                 }
                 .padding()

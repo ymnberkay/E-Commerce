@@ -13,6 +13,7 @@ struct SignupView: View {
     @ObservedObject  var viewModel: SignupViewModel = SignupViewModel()
     @StateObject var homeViewModel: HomeViewModel
     @StateObject var searchViewModel: SearchViewModel
+    @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     
     
     var body: some View {
@@ -97,7 +98,7 @@ struct SignupView: View {
             }
         }.navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $viewModel.isLoggedIn) {
-                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel)
+                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel)
             }
         
     }
@@ -106,5 +107,5 @@ struct SignupView: View {
 
 
 #Preview {
-    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(),searchViewModel: SearchViewModel())
+    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(),searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel())
 }

@@ -12,9 +12,10 @@ struct E_CommerceApp: App {
     @ObservedObject var viewModel = LoginViewModel()
     @StateObject var homeViewModel =  HomeViewModel()
     @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var exploreProductsViewModel = ExploreProductsViewModel()
     var body: some Scene {
         WindowGroup {
-            LoginView(viewModel: viewModel,homeViewModel: homeViewModel, searchViewModel: searchViewModel)
+            LoginView(viewModel: viewModel,homeViewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel)
         }
     }
 }

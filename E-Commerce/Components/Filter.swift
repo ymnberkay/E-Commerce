@@ -11,7 +11,7 @@ struct Filter: View {
     @StateObject var viewModel: ExploreProductsViewModel
     var body: some View {
         VStack {
-            TopNavView()
+            TopNavView(viewModel: viewModel)
             HStack {
                 Text("Category")
                     .font(.customFont(size: FontSizes.headline))
@@ -25,13 +25,8 @@ struct Filter: View {
             }
             
         }
-        .frame(maxWidth: .infinity)
-        .background(Color.white)
-        .cornerRadius(16)
-        .shadow(radius: 10)
-        .padding(.top, 220)
-        .padding(.bottom)
-        .edgesIgnoringSafeArea(.bottom)
+        .presentationDetents([.height(600)])
+        
     }
 }
 
@@ -44,7 +39,6 @@ private struct SortByView: View {
     var body: some View {
         
         VStack {
-            
             HStack {
                 Text("Sort by")
                     .font(.customFont(size: FontSizes.headline))
@@ -90,13 +84,14 @@ private struct PriceRatingView: View {
 }
 
 private struct TopNavView: View {
+    @StateObject var viewModel: ExploreProductsViewModel
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         HStack {
             Text("Filter")
                 .font(.customFont(size: FontSizes.title1))
             Spacer()
-            Button(action: { dismiss() }, label: {
+            Button(action: { viewModel.isSheetPresented = false }, label: {
                 Image("x")
             })
         }.padding()

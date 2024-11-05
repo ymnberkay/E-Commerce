@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @StateObject var searchViewModel: SearchViewModel
+    @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     var body: some View {
         VStack(spacing: -10) {
             TopView(viewModel: viewModel)
@@ -40,7 +41,7 @@ struct HomeView: View {
                 VStack(spacing: -5) {
                     CategoryList()
                     ScrollHorizontalView(viewModel: viewModel)
-                    SeeAllView()
+                    SeeAllView(viewModel: viewModel)
                     ScrollSmallHorizontalView(viewModel: viewModel)
                 }
                 
@@ -59,6 +60,8 @@ struct HomeView: View {
                     SearchView(viewModel: searchViewModel)
                 case .help:
                     SearchView(viewModel: searchViewModel)
+                case .seeAll:
+                    ExploreProductsView(viewModel: exploreProductsViewModel)
                 }
             }
         }
@@ -70,7 +73,7 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(), searchViewModel: SearchViewModel())
+    HomeView(viewModel: HomeViewModel(), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel())
 }
 //MARK: -UI
 
@@ -78,7 +81,7 @@ struct TopView: View {
     @StateObject var viewModel: HomeViewModel
     var body: some View {
         HStack {
-            Button(action: {viewModel.navigate(to: .profile)}, label: {
+            Button(action: { viewModel.navigate(to: .profile) }, label: {
                 Image("menu")
             })
             Spacer()
@@ -112,13 +115,14 @@ struct ScrollHorizontalView: View {
 }
 
 struct SeeAllView: View {
+    @StateObject var viewModel: HomeViewModel
     var body: some View {
         HStack {
             Text("Featured Products")
                 .font(.customFont(size: FontSizes.headline))
             Spacer()
             Button(action: {
-                
+                viewModel.navigate(to: .seeAll)
             }, label: {
                 Text("See all")
                     .font(.customFont(size: FontSizes.headline))
