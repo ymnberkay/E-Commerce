@@ -6,25 +6,41 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct Banner: View {
     
-    var items: [ String]
+    var items: [ItemDetail]
     var index: Int
+    var action: () -> Void
+    var isLoading: Bool
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading){
+            if isLoading {
+                ProgressView()
+            } else {
+                VStack(alignment: .leading){
+                    
+                    Text(items[index].name ?? "")
+                        .font(.customFont(size: FontSizes.title1))
+                        .padding(.vertical)
+                    Button(action: action, label: {
+                        Text("Shop now ->")
+                            .foregroundColor(.caribbeanGreen)
+                    })
+                }
+                KFImage(URL(string: items[index].image ?? ""))
+                    .placeholder{
+                        ProgressView()
+                    }
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120, height: 120)
+                    .background(RoundedRectangle(cornerRadius: 15).fill(.white))
                 
-                Text(items[index])
-                    .font(.customFont(size: FontSizes.title1))
-                    .padding(.vertical)
-                Button(action: {}, label: {
-                    Text("Shop now ->")
-                        .foregroundColor(.caribbeanGreen)
-                })
             }
-            Image("placeholderhp")
+            
         }
         .padding()
         .frame(width: 326, height: 178)
@@ -33,6 +49,6 @@ struct Banner: View {
     }
 }
 
-#Preview {
-    Banner(items: ["Berkay","Test"], index: 1)
-}
+//#Preview {
+//    Banner(items: ["Berkay","Test"], index: 1, action: {})
+//}

@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
+    @StateObject var productDetailViewModel: ProductDetailViewModel
+    
+    
     var body: some View {
         VStack(spacing: -10) {
             TopView(viewModel: viewModel)
@@ -49,19 +53,28 @@ struct HomeView: View {
             
                 
             
-        }.navigationDestination(isPresented: $viewModel.isPresented) {
+        }.onAppear(perform: {
+            Task {
+                await viewModel.fetchProducts()
+            }
+            viewModel.isPresented = false
+        })
+        
+        .navigationDestination(isPresented: $viewModel.isPresented) {
             if let destination = viewModel.selectedDestination {
                 switch destination {
                 case .search:
-                    SearchView(viewModel: searchViewModel)
+                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
                 case .profile:
-                    SearchView(viewModel: searchViewModel)
+                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
                 case .settings:
-                    SearchView(viewModel: searchViewModel)
+                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
                 case .help:
-                    SearchView(viewModel: searchViewModel)
+                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
                 case .seeAll:
                     ExploreProductsView(viewModel: exploreProductsViewModel)
+                case .detail:
+                    ProductDetailView(viewModel: productDetailViewModel)
                 }
             }
         }
@@ -73,7 +86,7 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel())
+    HomeView(viewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel())
 }
 //MARK: -UI
 
@@ -104,7 +117,9 @@ struct ScrollHorizontalView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
                 ForEach(viewModel.items.indices, id: \.self) { index in
-                    Banner(items: viewModel.items, index: index)
+                    Banner(items: viewModel.items, index: index, action: {
+                        viewModel.navigate(to: .detail)
+                    }, isLoading: viewModel.isLoading)
                     
                 }
                 .frame(height: 178)

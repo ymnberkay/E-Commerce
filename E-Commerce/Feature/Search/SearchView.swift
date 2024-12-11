@@ -6,23 +6,26 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
+    let itemDetail: [ItemDetail]?
+    
     var body: some View {
         VStack {
             NavigationTopBarView()
             Spacer()
             InputTextField(textInput: viewModel.inputText, opacity: 0.5)
             LastestSearchView()
-            PopularProductsView()
+            PopularProductsView(itemDetail: itemDetail)
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    SearchView(viewModel: SearchViewModel())
+    SearchView(viewModel: SearchViewModel(), itemDetail: [ItemDetail]())
 }
 
 private struct NavigationTopBarView: View {
@@ -70,6 +73,9 @@ struct LastestSearchView: View {
 }
 
 struct PopularProductsView: View {
+    
+    let itemDetail: [ItemDetail]?
+    
     var body: some View {
         HStack {
             Text("Popular Products")
@@ -78,22 +84,25 @@ struct PopularProductsView: View {
         }.padding()
         ForEach(Range(uncheckedBounds: (0,3))) { index in
             HStack {
-                Image("placeholderhp")
+                KFImage(URL(string: itemDetail?[index].image ?? ""))
+                    .placeholder{
+                        ProgressView()
+                    }
                     .resizable()
                     .scaledToFit()
                     .frame(width: 120, height: 120)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.black.opacity(0.1)))
+                    .background(RoundedRectangle(cornerRadius: 15).fill(.white))
                 VStack(alignment: .leading) {
-                    Text("TMA-2 Comfort Wireless")
+                    Text(itemDetail?[index].name ?? "")
                         .font(.customFont(size: 16))
                         .padding(.vertical)
-                    Text("USD 250")
+                    Text("USD \(String(describing: itemDetail?[index].price ?? 0.0))")
                         .font(.customFont(size: 16))
                     HStack {
                         Image("star-filled")
-                        Text("5.6")
+                        Text("\(String(describing: itemDetail?[index].rating ?? 0.0))")
                             .font(.customFont(size: 16))
-                        Text("86 reviews")
+                        Text("\(String(describing: itemDetail?[index].views ?? 0)) reviews")
                             .font(.customFont(size: 16))
                     }
                     .padding(.vertical)

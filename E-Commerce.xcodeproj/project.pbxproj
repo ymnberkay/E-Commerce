@@ -13,6 +13,10 @@
 		CE2998DC2CD03192007EF591 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2998DB2CD03192007EF591 /* Banner.swift */; };
 		CE3E9DE12CDA9BFB004386DE /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E9DE02CDA9BFB004386DE /* ProductDetailViewModel.swift */; };
 		CE3E9DE32CDAA36F004386DE /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E9DE22CDAA36F004386DE /* Review.swift */; };
+		CE7C98692D09B3B400F52BA6 /* ECommerceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C98682D09B3B400F52BA6 /* ECommerceService.swift */; };
+		CE7C986C2D09B47600F52BA6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CE7C986B2D09B47600F52BA6 /* Alamofire */; };
+		CE7C986E2D09B98C00F52BA6 /* Headphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C986D2D09B98C00F52BA6 /* Headphone.swift */; };
+		CE7C98712D0A22FB00F52BA6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE7C98702D0A22FB00F52BA6 /* Kingfisher */; };
 		CE85EAE42CCCF4C400F881BD /* E_CommerceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EAE32CCCF4C400F881BD /* E_CommerceApp.swift */; };
 		CE85EAE62CCCF4C400F881BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EAE52CCCF4C400F881BD /* ContentView.swift */; };
 		CE85EAE82CCCF4C800F881BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE85EAE72CCCF4C800F881BD /* Assets.xcassets */; };
@@ -49,6 +53,8 @@
 		CE2998DB2CD03192007EF591 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE3E9DE02CDA9BFB004386DE /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		CE3E9DE22CDAA36F004386DE /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		CE7C98682D09B3B400F52BA6 /* ECommerceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECommerceService.swift; sourceTree = "<group>"; };
+		CE7C986D2D09B98C00F52BA6 /* Headphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headphone.swift; sourceTree = "<group>"; };
 		CE85EAE02CCCF4C400F881BD /* E-Commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE85EAE32CCCF4C400F881BD /* E_CommerceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E_CommerceApp.swift; sourceTree = "<group>"; };
 		CE85EAE52CCCF4C400F881BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,12 +91,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7C98712D0A22FB00F52BA6 /* Kingfisher in Frameworks */,
+				CE7C986C2D09B47600F52BA6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE7C98672D09B38900F52BA6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C98682D09B3B400F52BA6 /* ECommerceService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		CE85EAD72CCCF4C400F881BD = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +151,7 @@
 		CE85EAF12CCCF63900F881BD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C98672D09B38900F52BA6 /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -263,6 +280,7 @@
 			children = (
 				CEF1647A2CCF938600D7E10C /* HomeView.swift */,
 				CE2998D32CD02A01007EF591 /* HomeViewModel.swift */,
+				CE7C986D2D09B98C00F52BA6 /* Headphone.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -292,6 +310,10 @@
 			dependencies = (
 			);
 			name = "E-Commerce";
+			packageProductDependencies = (
+				CE7C986B2D09B47600F52BA6 /* Alamofire */,
+				CE7C98702D0A22FB00F52BA6 /* Kingfisher */,
+			);
 			productName = "E-Commerce";
 			productReference = CE85EAE02CCCF4C400F881BD /* E-Commerce.app */;
 			productType = "com.apple.product-type.application";
@@ -320,6 +342,10 @@
 				Base,
 			);
 			mainGroup = CE85EAD72CCCF4C400F881BD;
+			packageReferences = (
+				CE7C986A2D09B47600F52BA6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CE7C986F2D0A22FB00F52BA6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = CE85EAE12CCCF4C400F881BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +378,7 @@
 			files = (
 				CE85EAE62CCCF4C400F881BD /* ContentView.swift in Sources */,
 				CEFFB1DE2CD0EFF0008407A8 /* SearchView.swift in Sources */,
+				CE7C98692D09B3B400F52BA6 /* ECommerceService.swift in Sources */,
 				CEF1646D2CCF860900D7E10C /* ScreenSizes.swift in Sources */,
 				CE2998DA2CD02F16007EF591 /* CategoryList.swift in Sources */,
 				CE85EB0A2CCD019000F881BD /* Fonts.swift in Sources */,
@@ -369,6 +396,7 @@
 				CE2998D42CD02A01007EF591 /* HomeViewModel.swift in Sources */,
 				CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */,
 				CEC386002CD2CFC500A662BD /* SearchViewModel.swift in Sources */,
+				CE7C986E2D09B98C00F52BA6 /* Headphone.swift in Sources */,
 				CEF1647B2CCF938600D7E10C /* HomeView.swift in Sources */,
 				CE3E9DE32CDAA36F004386DE /* Review.swift in Sources */,
 				CEFFB1DB2CD0EF76008407A8 /* Destination.swift in Sources */,
@@ -584,6 +612,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE7C986A2D09B47600F52BA6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		CE7C986F2D0A22FB00F52BA6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE7C986B2D09B47600F52BA6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE7C986A2D09B47600F52BA6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		CE7C98702D0A22FB00F52BA6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE7C986F2D0A22FB00F52BA6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE85EAD82CCCF4C400F881BD /* Project object */;
 }

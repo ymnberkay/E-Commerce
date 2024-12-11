@@ -14,7 +14,7 @@ struct SignupView: View {
     @StateObject var homeViewModel: HomeViewModel
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
-    
+    @StateObject var productDetailViewModel: ProductDetailViewModel
     
     var body: some View {
         ZStack {
@@ -98,7 +98,7 @@ struct SignupView: View {
             }
         }.navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $viewModel.isLoggedIn) {
-                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel)
+                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel)
             }
         
     }
@@ -107,5 +107,5 @@ struct SignupView: View {
 
 
 #Preview {
-    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(),searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel())
+    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(service: ECommerceService()),searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel())
 }

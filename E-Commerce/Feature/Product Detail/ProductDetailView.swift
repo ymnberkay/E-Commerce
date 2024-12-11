@@ -29,11 +29,11 @@ struct ProductDetailView: View {
             if viewModel.selectedOption == 0 {
                 OverviewView(viewModel: viewModel)
             } else if viewModel.selectedOption == 1 {
-                Spacer()
+                FeaturesView(viewModel: viewModel)
             } else if viewModel.selectedOption == 2 {
                 Spacer()
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
@@ -156,5 +156,30 @@ private struct OverviewView: View {
             }
         }
         
+    }
+}
+
+private struct FeaturesView: View {
+    @StateObject var viewModel: ProductDetailViewModel
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Highly Detailed Audio")
+                    .font(.customFont(size: 16))
+                Spacer()
+            }.padding()
+            
+            HStack {
+                Text("The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.\n\nThe speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.")
+                    .multilineTextAlignment(.leading)
+                    .font(.customFont(size: 14))
+                Spacer()
+            }.padding()
+            
+            PrimaryButton(title: "Add To Cart", action: {
+                
+            })
+            Spacer()
+        }
     }
 }
