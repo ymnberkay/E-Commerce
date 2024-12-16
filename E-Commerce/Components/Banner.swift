@@ -19,6 +19,10 @@ struct Banner: View {
         HStack {
             if isLoading {
                 ProgressView()
+                    .frame(width: 326, height: 178)
+                    .background(RoundedRectangle(cornerRadius: 20)
+                        .fill(.white))
+                
             } else {
                 VStack(alignment: .leading){
                     
@@ -50,5 +54,5 @@ struct Banner: View {
 }
 
 //#Preview {
-//    Banner(items: ["Berkay","Test"], index: 1, action: {})
+//    Banner(items: [], index: 1, action: {}, isLoading: true)
 //}

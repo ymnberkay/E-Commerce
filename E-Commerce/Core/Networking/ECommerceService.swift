@@ -5,6 +5,8 @@
 //  Created by Berkay Yaman on 11.12.2024.
 // https://run.mocky.io/v3/e18004c6-a6fc-46ca-82db-ea1b5cb1f2dc
 
+//  /2184f040-f039-4a69-a619-479b8b0c00f1
+
 import Alamofire
 
 protocol IECommerceService {

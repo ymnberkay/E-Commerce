@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ExploreProductsView: View {
     @StateObject var viewModel: ExploreProductsViewModel
+    let itemDetail: [ItemDetail]?
     var body: some View {
         VStack {
             NavigationTopBarView()
@@ -26,9 +28,14 @@ struct ExploreProductsView: View {
                 Spacer()
             }.padding(.horizontal)
             
-            HorizontalStackScrollView(viewModel: viewModel)
+            HorizontalStackScrollView(viewModel: viewModel, itemDetail: itemDetail)
             ItemsScrollView(viewModel: viewModel)
             
+        }
+        .onAppear {
+            if let itemDetail = itemDetail {
+                viewModel.sortArray(itemArray: itemDetail, sortOption: .none)
+            }
         }
         .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $viewModel.isSheetPresented) {
@@ -39,7 +46,7 @@ struct ExploreProductsView: View {
 }
 
 #Preview {
-    ExploreProductsView(viewModel: ExploreProductsViewModel())
+    ExploreProductsView(viewModel: ExploreProductsViewModel(), itemDetail: [ItemDetail(id: 1, name: "Airpods 2", price: 200.0, views: 269, rating: 3.5, image: "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/0003-layer-3_large.jpg")])
 }
 
 
@@ -60,6 +67,7 @@ private struct NavigationTopBarView: View {@Environment(\.presentationMode) var 
 
 private struct HorizontalStackScrollView: View {
     @StateObject var viewModel: ExploreProductsViewModel
+    let itemDetail: [ItemDetail]?
     var body: some View {
         HStack {
             Button(action:  {viewModel.isSheetPresented = true }, label: {
@@ -74,10 +82,20 @@ private struct HorizontalStackScrollView: View {
             })
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack {
-                    ForEach(viewModel.items, id: \.self) { item in
+                    ForEach(viewModel.sortCategory, id: \.self) { item in
                         Text(item)
                             .font(.customFont(size: FontSizes.caption1))
                             .padding()
+                            .onTapGesture {
+                                if item == "Popularity" {
+                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .popularity)
+                                } else if item == "Low Price" {
+                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .lowPrice)
+                                } else if item == "High Price" {
+                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .highPrice)
+                                }
+                            }
+                            
                     }
                 }
             }.padding(.leading)
@@ -95,17 +113,9 @@ private struct ItemsScrollView: View {
             
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: viewModel.columns, spacing: 16) {
-                    ForEach(viewModel.itemss, id: \.self) { item in
+                    ForEach(viewModel.sortedArray, id: \.self) { item in
                         Button(action: { }, label: {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.white)
-                                    .frame(width: 155,height: 243)
-                                Text("Item \(item)")
-                                    .foregroundColor(.gray)
-                                    .bold()
-                            }
-                            
+                            ItemCardView(item: item)
                         })
                         
                         
@@ -117,3 +127,52 @@ private struct ItemsScrollView: View {
         }
     }
 }
+
+private struct ItemCardView: View {
+    let item: ItemDetail
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color.white)
+                .frame(width: 155,height: 243)
+            VStack {
+                KFImage(URL(string: item.image ?? ""))
+                    .placeholder{
+                        ProgressView()
+                    }
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120, height: 120)
+                    .background(RoundedRectangle(cornerRadius: 15).fill(.white))
+                VStack(alignment: .leading) {
+                    Text("\(item.name ?? "")")
+                        .font(.customFont(size: FontSizes.headline))
+                        .lineLimit(1)
+                        .foregroundColor(.black)
+                    Text("USD \(String(format: "%.1f", item.price ?? 0.0))")
+                        .font(.customFont(size: FontSizes.headline))
+                        .foregroundColor(.black)
+                    HStack {
+                        Image("star-filled")
+                        Text(String(format: "%.1f", item.rating ?? 0.0))
+                            .font(.customFont(size: FontSizes.caption1))
+                            .foregroundColor(.black)
+                        Text("\(item.views ?? 0) Reviews")
+                            .font(.customFont(size: FontSizes.caption1))
+                            .foregroundColor(.black)
+                        
+                    }
+                }
+                
+            }
+            
+        }
+        .padding()
+        .frame(width: 155,height: 243)
+    }
+}
+
+
+//#Preview {
+//    ItemCardView(item: ItemDetail(id: 1, name: "Airpods 2", price: 200.0, views: 269, rating: 3.5, image: "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/0003-layer-3_large.jpg"))
+//}

@@ -72,7 +72,7 @@ struct HomeView: View {
                 case .help:
                     SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
                 case .seeAll:
-                    ExploreProductsView(viewModel: exploreProductsViewModel)
+                    ExploreProductsView(viewModel: exploreProductsViewModel, itemDetail: viewModel.items)
                 case .detail:
                     ProductDetailView(viewModel: productDetailViewModel)
                 }
