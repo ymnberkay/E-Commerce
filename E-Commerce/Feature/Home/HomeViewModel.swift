@@ -36,7 +36,7 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        if let fetchedProducts = await service.fetchAllPageData(path: "/2184f040-f039-4a69-a619-479b8b0c00f1", method: .get, type: Items.self) {
+        if let fetchedProducts = await service.fetchAllPageData(path: "/3447ff6f-4e4f-4060-a442-65978ef92d82", method: .get, type: Items.self) {
             DispatchQueue.main.async {
                 self.items = fetchedProducts.products ?? []
             }

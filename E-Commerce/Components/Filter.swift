@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Filter: View {
     @StateObject var viewModel: ExploreProductsViewModel
+    let itemDetail: [ItemDetail]?
     var body: some View {
         VStack {
             TopNavView(viewModel: viewModel)
@@ -21,7 +22,9 @@ struct Filter: View {
             SortByView(viewModel: viewModel)
             PriceRatingView(viewModel: viewModel)
             PrimaryButton(title: "Apply Filter") {
-                
+                print(viewModel.highPriceValue)
+                viewModel.updatedArray = viewModel.filterPriceValue(itemArray: itemDetail ?? [], highPriceValue: Double(viewModel.highPriceValue) ?? 0.0, lowPriceValue: Double(viewModel.lowPriceValue) ?? 0.0)
+                viewModel.isSheetPresented = false
             }
             
         }
@@ -31,7 +34,7 @@ struct Filter: View {
 }
 
 #Preview {
-    Filter(viewModel: ExploreProductsViewModel())
+    Filter(viewModel: ExploreProductsViewModel(), itemDetail: [ItemDetail(id: 1, name: "Airpods 2", price: 200.0, views: 269, rating: 3.5, image: "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/0003-layer-3_large.jpg")])
 }
 
 private struct SortByView: View {
@@ -71,11 +74,13 @@ private struct PriceRatingView: View {
         }.padding(.horizontal)
         HStack(spacing: 35) {
             TextField("Low Price", text: $viewModel.lowPriceValue)
+                .keyboardType(.numberPad)
                 .font(.customFont(size: FontSizes.headline))
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))
             
             TextField("High Price", text: $viewModel.highPriceValue)
+                .keyboardType(.numberPad)
                 .font(.customFont(size: FontSizes.headline))
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))

@@ -39,7 +39,7 @@ struct ExploreProductsView: View {
         }
         .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $viewModel.isSheetPresented) {
-            Filter(viewModel: viewModel)
+            Filter(viewModel: viewModel, itemDetail: itemDetail)
         }
         .edgesIgnoringSafeArea(.bottom)
     }
@@ -88,14 +88,14 @@ private struct HorizontalStackScrollView: View {
                             .padding()
                             .onTapGesture {
                                 if item == "Popularity" {
-                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .popularity)
+                                    viewModel.sortArray(itemArray: viewModel.updatedArray, sortOption: .popularity)
                                 } else if item == "Low Price" {
-                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .lowPrice)
+                                    viewModel.sortArray(itemArray: viewModel.updatedArray, sortOption: .lowPrice)
                                 } else if item == "High Price" {
-                                    viewModel.sortArray(itemArray: viewModel.sortedArray, sortOption: .highPrice)
+                                    viewModel.sortArray(itemArray: viewModel.updatedArray, sortOption: .highPrice)
                                 }
                             }
-                            
+                        
                     }
                 }
             }.padding(.leading)
@@ -113,7 +113,7 @@ private struct ItemsScrollView: View {
             
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: viewModel.columns, spacing: 16) {
-                    ForEach(viewModel.sortedArray, id: \.self) { item in
+                    ForEach(viewModel.updatedArray, id: \.self) { item in
                         Button(action: { }, label: {
                             ItemCardView(item: item)
                         })
