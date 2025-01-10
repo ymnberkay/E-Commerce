@@ -13,6 +13,7 @@ struct HomeView: View {
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     @StateObject var productDetailViewModel: ProductDetailViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     
     
     var body: some View {
@@ -74,7 +75,7 @@ struct HomeView: View {
                 case .seeAll:
                     ExploreProductsView(viewModel: exploreProductsViewModel, itemDetail: viewModel.items)
                 case .detail:
-                    ProductDetailView(viewModel: productDetailViewModel)
+                    ProductDetailView(viewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
                 }
             }
         }
@@ -86,7 +87,7 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel())
+    HomeView(viewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
 }
 //MARK: -UI
 

@@ -9,19 +9,28 @@ import Foundation
 
 final class ProductDetailViewModel: ObservableObject {
     @Published  var selectedOption: Int = 0
-    @Published var priceValue: Int?
-    @Published var title: String?
     let options = ["Overview", "Features", "Specification"]
-    @Published var productImages = ["placeholderhp", "placeholderhp", "placeholderhp"]
-    @Published var reviewCount: Int?
-    let products = [
-            Product(image: "headphones", name: "TMA-2 HD Wireless", price: "USD 350"),
-            Product(image: "cable", name: "CO2 - Cable", price: "USD 25")
-        ]
+    @Published var productDetail: ProductDetail?
+    @Published var isLoading: Bool = false
+    private let service: IECommerceService
+    
+    init(service: IECommerceService) {
+        self.service = service
+    }
+    
+    func fetchDetailData() async {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+        if let fetcedDetails =  await service.fetchAllPageData(path: "/b6a15ba9-e766-4439-8559-610da7aca51b", method: .get, type: ProductDetail.self) {
+            DispatchQueue.main.async {
+                self.productDetail = fetcedDetails
+            }
+        } else {
+            print("Failed to fetch products")
+        }
+    }
+    
 }
-struct Product: Identifiable {
-    let id = UUID()
-    let image: String
-    let name: String
-    let price: String
-}
+
+

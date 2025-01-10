@@ -14,10 +14,11 @@ struct E_CommerceApp: App {
     @StateObject var homeViewModel =  HomeViewModel(service: ECommerceService())
     @StateObject var searchViewModel = SearchViewModel()
     @StateObject var exploreProductsViewModel = ExploreProductsViewModel()
-    @StateObject var productDetailViewModel = ProductDetailViewModel()
+    @StateObject var productDetailViewModel = ProductDetailViewModel(service: ECommerceService())
+    @StateObject var purchasedProductViewModel = PurchasedProductsViewModel()
     var body: some Scene {
         WindowGroup {
-            LoginView(viewModel: viewModel,homeViewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel, productDetailViewModel: productDetailViewModel)
+            LoginView(viewModel: viewModel,homeViewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel, productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
         }
     }
 }

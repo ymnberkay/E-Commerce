@@ -15,7 +15,7 @@ struct SignupView: View {
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     @StateObject var productDetailViewModel: ProductDetailViewModel
-    
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     var body: some View {
         ZStack {
             Image("mainImage")
@@ -98,7 +98,7 @@ struct SignupView: View {
             }
         }.navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $viewModel.isLoggedIn) {
-                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel)
+                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
             }
         
     }
@@ -107,5 +107,5 @@ struct SignupView: View {
 
 
 #Preview {
-    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(service: ECommerceService()),searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel())
+    SignupView(viewModel: SignupViewModel(),homeViewModel: HomeViewModel(service: ECommerceService()),searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
 }

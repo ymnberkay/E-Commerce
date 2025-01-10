@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProductDetailView: View {
     @StateObject var viewModel: ProductDetailViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     var body: some View {
         VStack {
             NavigationTopBarView()
             HStack {
-                Text("200 USD")
+                Text("\(String(describing: viewModel.productDetail?.product.price ?? 0.0)) USD")
                     .foregroundColor(.primaryColor)
                     .font(.customFont(size: FontSizes.headline))
                 Spacer()
             }.padding(.horizontal)
             HStack {
-                Text("TMA Wireless")
+                Text(viewModel.productDetail?.product.name ?? "")
                     .font(.customFont(size: FontSizes.title1))
                 Spacer()
             }.padding(.horizontal)
@@ -29,16 +31,24 @@ struct ProductDetailView: View {
             if viewModel.selectedOption == 0 {
                 OverviewView(viewModel: viewModel)
             } else if viewModel.selectedOption == 1 {
-                FeaturesView(viewModel: viewModel)
+                FeaturesView(viewModel: viewModel, purchasedProductViewModel: purchasedProductViewModel)
             } else if viewModel.selectedOption == 2 {
                 Spacer()
             }
-        }.navigationBarBackButtonHidden(true)
+        }.onAppear {
+            Task {
+                await viewModel.fetchDetailData()
+                
+            }
+            
+            
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    ProductDetailView(viewModel: ProductDetailViewModel())
+    ProductDetailView(viewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
 }
 
 private struct NavigationTopBarView: View {@Environment(\.presentationMode) var presentationMode
@@ -87,8 +97,11 @@ private struct OverviewView: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        ForEach(viewModel.productImages, id: \.self) { imageName in
-                            Image(imageName)
+                        ForEach(viewModel.productDetail?.product.images ?? [], id: \.self) { imageName in
+                            KFImage(URL(string: imageName))
+                                .placeholder{
+                                    ProgressView()
+                                }
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 281, height: 391)
@@ -98,14 +111,14 @@ private struct OverviewView: View {
                     .padding()
                 }
                 HStack {
-                    Text("Review (102)")
+                    Text("Review (\(viewModel.productDetail?.product.views ?? 102))")
                         .font(.customFont(size: FontSizes.headline))
                     Spacer()
                 }.padding(.horizontal)
                 
                 VStack {
                     ForEach(0..<3, id: \.self) { index in
-                        Review(images: "Ellipse 10", userName: "Madelina", filledStars: 3, reviewText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+                        Review(images: "Ellipse 10", userName: viewModel.productDetail?.product.reviews?[index].username ?? "", filledStars: Int(viewModel.productDetail?.product.reviews?[index].rating ?? 0), reviewText: viewModel.productDetail?.product.reviews?[index].comment ?? "")
                     }
                     .padding(.vertical)
                     Button(action: {}, label: {
@@ -125,20 +138,23 @@ private struct OverviewView: View {
                 .padding()
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
-                        ForEach(viewModel.products) { product in
+                        ForEach(viewModel.productDetail?.product.relatedProducts ?? [], id: \.id) { product in
                             VStack {
-                                Image("placeholderhp") // Bu resimlerin assetlerinizde mevcut olması gerekiyor
+                                KFImage(URL(string: product.image ?? "" ))
+                                    .placeholder{
+                                        ProgressView()
+                                    }
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 100, height: 100)
                                     .background(Color.white)
                                     .cornerRadius(10)
                                 
-                                Text(product.name)
+                                Text(product.name ?? "")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
                                 
-                                Text(product.price)
+                                Text("\(String(describing: product.price))")
                                     .font(.footnote)
                                     .foregroundColor(.gray)
                             }
@@ -161,6 +177,7 @@ private struct OverviewView: View {
 
 private struct FeaturesView: View {
     @StateObject var viewModel: ProductDetailViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     var body: some View {
         VStack {
             HStack {

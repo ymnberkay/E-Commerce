@@ -13,6 +13,7 @@ struct LoginView: View {
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     @StateObject var productDetailViewModel: ProductDetailViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     
     var body: some View {
         NavigationStack {
@@ -90,7 +91,7 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.isLoggedIn){
-                SignupView(homeViewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel)
+                SignupView(homeViewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
             }
         }.onAppear(perform: {
             viewModel.isLoggedIn = false
@@ -100,5 +101,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(viewModel: LoginViewModel(), homeViewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel())
+    LoginView(viewModel: LoginViewModel(), homeViewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
 }
