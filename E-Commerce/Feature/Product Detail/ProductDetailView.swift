@@ -13,7 +13,7 @@ struct ProductDetailView: View {
     @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     var body: some View {
         VStack {
-            NavigationTopBarView()
+            NavigationTopBarView( viewModel: viewModel)
             HStack {
                 Text("\(String(describing: viewModel.productDetail?.product.price ?? 0.0)) USD")
                     .foregroundColor(.primaryColor)
@@ -29,20 +29,22 @@ struct ProductDetailView: View {
             ProductOptionView(viewModel: viewModel)
             
             if viewModel.selectedOption == 0 {
-                OverviewView(viewModel: viewModel)
+                OverviewView(viewModel: viewModel, purchasedProductViewModel: purchasedProductViewModel)
             } else if viewModel.selectedOption == 1 {
                 FeaturesView(viewModel: viewModel, purchasedProductViewModel: purchasedProductViewModel)
             } else if viewModel.selectedOption == 2 {
                 Spacer()
             }
         }.onAppear {
+            viewModel.navigateToShopping = false
             Task {
                 await viewModel.fetchDetailData()
                 
             }
-            
-            
         }
+        .navigationDestination(isPresented: $viewModel.navigateToShopping, destination: {
+            ShoppingCartView(viewModel: purchasedProductViewModel)
+        })
         .navigationBarBackButtonHidden(true)
     }
 }
@@ -52,13 +54,14 @@ struct ProductDetailView: View {
 }
 
 private struct NavigationTopBarView: View {@Environment(\.presentationMode) var presentationMode
+    @StateObject var viewModel: ProductDetailViewModel
     var body: some View {
         HStack {
             Button(action: {presentationMode.wrappedValue.dismiss()}, label: {
                 Image("arrow-left")
             })
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {viewModel.navigateToShopping = true}, label: {
                 Image("shopping-cart")
             })
             
@@ -92,6 +95,7 @@ private struct ProductOptionView: View {
 
 private struct OverviewView: View {
     @StateObject var viewModel: ProductDetailViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -167,7 +171,9 @@ private struct OverviewView: View {
                 }
                 .padding()
                 PrimaryButton(title: "Add To Cart", action: {
+                    purchasedProductViewModel.addItem(item: PurchasedItem(title: viewModel.productDetail?.product.name, price: viewModel.productDetail?.product.price, image: viewModel.productDetail?.product.images?[0], count: 1))
                     
+                    print(purchasedProductViewModel.purchasedProductsList)
                 })
             }
         }

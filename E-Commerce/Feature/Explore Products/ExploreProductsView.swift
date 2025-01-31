@@ -10,10 +10,11 @@ import Kingfisher
 
 struct ExploreProductsView: View {
     @StateObject var viewModel: ExploreProductsViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     let itemDetail: [ItemDetail]?
     var body: some View {
         VStack {
-            NavigationTopBarView()
+            NavigationTopBarView(viewModel: viewModel)
             
             HStack {
                 Text("Headphone")
@@ -33,10 +34,14 @@ struct ExploreProductsView: View {
             
         }
         .onAppear {
+            viewModel.navigateToShopping = false
             if let itemDetail = itemDetail {
                 viewModel.sortArray(itemArray: itemDetail, sortOption: .none)
             }
         }
+        .navigationDestination(isPresented: $viewModel.navigateToShopping, destination: {
+            ShoppingCartView(viewModel: purchasedProductViewModel)
+        })
         .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $viewModel.isSheetPresented) {
             Filter(viewModel: viewModel, itemDetail: itemDetail)
@@ -46,18 +51,19 @@ struct ExploreProductsView: View {
 }
 
 #Preview {
-    ExploreProductsView(viewModel: ExploreProductsViewModel(), itemDetail: [ItemDetail(id: 1, name: "Airpods 2", price: 200.0, views: 269, rating: 3.5, image: "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/0003-layer-3_large.jpg")])
+    ExploreProductsView(viewModel: ExploreProductsViewModel(), purchasedProductViewModel: PurchasedProductsViewModel(), itemDetail: [ItemDetail(id: 1, name: "Airpods 2", price: 200.0, views: 269, rating: 3.5, image: "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/0003-layer-3_large.jpg")])
 }
 
 
 private struct NavigationTopBarView: View {@Environment(\.presentationMode) var presentationMode
+    @StateObject var viewModel: ExploreProductsViewModel
     var body: some View {
         HStack {
             Button(action: {presentationMode.wrappedValue.dismiss()}, label: {
                 Image("arrow-left")
             })
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {viewModel.navigateToShopping = true}, label: {
                 Image("shopping-cart")
             })
             

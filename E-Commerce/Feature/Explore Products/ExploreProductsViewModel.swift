@@ -24,6 +24,7 @@ final class ExploreProductsViewModel: ObservableObject {
     @Published var firstItemArray: [ItemDetail] = []
     @Published var updatedArray: [ItemDetail] = []
     
+    @Published var navigateToShopping: Bool = false
     
     func sortArray(itemArray: [ItemDetail], sortOption: SortOption) {
         switch sortOption {

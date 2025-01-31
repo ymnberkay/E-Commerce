@@ -10,26 +10,34 @@ import Kingfisher
 
 struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
+    @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
     let itemDetail: [ItemDetail]?
     
     var body: some View {
         VStack {
-            NavigationTopBarView()
+            NavigationTopBarView(viewModel: viewModel)
             Spacer()
             InputTextField(textInput: viewModel.inputText, opacity: 0.5)
             LastestSearchView()
             PopularProductsView(itemDetail: itemDetail)
         }
+        .onAppear {
+            viewModel.navigateToShopping = false
+        }
+        .navigationDestination(isPresented: $viewModel.navigateToShopping, destination: {
+            ShoppingCartView(viewModel: purchasedProductViewModel)
+        })
         .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    SearchView(viewModel: SearchViewModel(), itemDetail: [ItemDetail]())
+    SearchView(viewModel: SearchViewModel(), purchasedProductViewModel: PurchasedProductsViewModel(), itemDetail: [ItemDetail]())
 }
 
 private struct NavigationTopBarView: View {
     @Environment(\.dismiss) private var dismiss
+    @StateObject var viewModel: SearchViewModel
     var body: some View {
         HStack {
             Button(action: {dismiss()}, label: {
@@ -38,7 +46,7 @@ private struct NavigationTopBarView: View {
             Spacer()
             Text("Search")
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {viewModel.navigateToShopping = true}, label: {
                 Image("shopping-cart")
             })
             

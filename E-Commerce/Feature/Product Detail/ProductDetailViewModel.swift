@@ -12,6 +12,7 @@ final class ProductDetailViewModel: ObservableObject {
     let options = ["Overview", "Features", "Specification"]
     @Published var productDetail: ProductDetail?
     @Published var isLoading: Bool = false
+    @Published var navigateToShopping: Bool = false
     private let service: IECommerceService
     
     init(service: IECommerceService) {
@@ -22,7 +23,7 @@ final class ProductDetailViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = true
         }
-        if let fetcedDetails =  await service.fetchAllPageData(path: "/b6a15ba9-e766-4439-8559-610da7aca51b", method: .get, type: ProductDetail.self) {
+        if let fetcedDetails =  await service.fetchAllPageData(path: "/35c80431-8f5b-4128-8dc0-cc921e35eaf3", method: .get, type: ProductDetail.self) {
             DispatchQueue.main.async {
                 self.productDetail = fetcedDetails
             }

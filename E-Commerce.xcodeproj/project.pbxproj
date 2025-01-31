@@ -13,6 +13,8 @@
 		CE2998DC2CD03192007EF591 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2998DB2CD03192007EF591 /* Banner.swift */; };
 		CE3E9DE12CDA9BFB004386DE /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E9DE02CDA9BFB004386DE /* ProductDetailViewModel.swift */; };
 		CE3E9DE32CDAA36F004386DE /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E9DE22CDAA36F004386DE /* Review.swift */; };
+		CE6BAD972D32AB69000FE697 /* PurchasedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAD962D32AB69000FE697 /* PurchasedItem.swift */; };
+		CE6BAD992D32AD6C000FE697 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAD982D32AD6C000FE697 /* ShoppingCart.swift */; };
 		CE7C98692D09B3B400F52BA6 /* ECommerceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C98682D09B3B400F52BA6 /* ECommerceService.swift */; };
 		CE7C986C2D09B47600F52BA6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CE7C986B2D09B47600F52BA6 /* Alamofire */; };
 		CE7C986E2D09B98C00F52BA6 /* Headphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C986D2D09B98C00F52BA6 /* Headphone.swift */; };
@@ -57,6 +59,8 @@
 		CE2998DB2CD03192007EF591 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE3E9DE02CDA9BFB004386DE /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		CE3E9DE22CDAA36F004386DE /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		CE6BAD962D32AB69000FE697 /* PurchasedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedItem.swift; sourceTree = "<group>"; };
+		CE6BAD982D32AD6C000FE697 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		CE7C98682D09B3B400F52BA6 /* ECommerceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECommerceService.swift; sourceTree = "<group>"; };
 		CE7C986D2D09B98C00F52BA6 /* Headphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headphone.swift; sourceTree = "<group>"; };
 		CE85EAE02CCCF4C400F881BD /* E-Commerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-Commerce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +193,7 @@
 				CEC385F72CD2C69100A662BD /* InputTextField.swift */,
 				CEC613E42CD66A9700E96754 /* Filter.swift */,
 				CE3E9DE22CDAA36F004386DE /* Review.swift */,
+				CE6BAD982D32AD6C000FE697 /* ShoppingCart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			children = (
 				CEB636D82D3156D60071C71E /* ShoppingCartView.swift */,
 				CEB636DA2D3159C00071C71E /* PurchasedProductsViewModel.swift */,
+				CE6BAD962D32AB69000FE697 /* PurchasedItem.swift */,
 			);
 			path = "Shoppinng Cart";
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				CEFFB1DE2CD0EFF0008407A8 /* SearchView.swift in Sources */,
 				CE7C98692D09B3B400F52BA6 /* ECommerceService.swift in Sources */,
 				CEF1646D2CCF860900D7E10C /* ScreenSizes.swift in Sources */,
+				CE6BAD972D32AB69000FE697 /* PurchasedItem.swift in Sources */,
 				CE2998DA2CD02F16007EF591 /* CategoryList.swift in Sources */,
 				CE85EB0A2CCD019000F881BD /* Fonts.swift in Sources */,
 				CEB9363F2D1055EE004BF5D7 /* SortOption.swift in Sources */,
@@ -415,6 +422,7 @@
 				CEF164722CCF88F900D7E10C /* SignupViewModel.swift in Sources */,
 				CEC385F82CD2C69100A662BD /* InputTextField.swift in Sources */,
 				CE2998D42CD02A01007EF591 /* HomeViewModel.swift in Sources */,
+				CE6BAD992D32AD6C000FE697 /* ShoppingCart.swift in Sources */,
 				CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */,
 				CEB636DD2D315DCB0071C71E /* ProductDetail.swift in Sources */,
 				CEB636DB2D3159C00071C71E /* PurchasedProductsViewModel.swift in Sources */,

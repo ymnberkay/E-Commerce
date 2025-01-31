@@ -65,15 +65,15 @@ struct HomeView: View {
             if let destination = viewModel.selectedDestination {
                 switch destination {
                 case .search:
-                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
+                    SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .profile:
-                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
+                    SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .settings:
-                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
+                    SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .help:
-                    SearchView(viewModel: searchViewModel, itemDetail: viewModel.items)
+                    SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .seeAll:
-                    ExploreProductsView(viewModel: exploreProductsViewModel, itemDetail: viewModel.items)
+                    ExploreProductsView(viewModel: exploreProductsViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .detail:
                     ProductDetailView(viewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
                 }

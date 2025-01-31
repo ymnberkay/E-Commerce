@@ -9,5 +9,6 @@ import Foundation
 
 final class SearchViewModel: ObservableObject {
     @Published var inputText: String = ""
+    @Published var navigateToShopping: Bool = false
     
 }
