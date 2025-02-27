@@ -14,6 +14,7 @@ struct HomeView: View {
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     @StateObject var productDetailViewModel: ProductDetailViewModel
     @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
+    @StateObject var profileViewModel: ProfileViewModel
     
     
     var body: some View {
@@ -51,9 +52,6 @@ struct HomeView: View {
                 }
                 
             }
-            
-                
-            
         }.onAppear(perform: {
             Task {
                 await viewModel.fetchProducts()
@@ -67,7 +65,7 @@ struct HomeView: View {
                 case .search:
                     SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .profile:
-                    SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
+                    ProfileView(viewModel: profileViewModel)
                 case .settings:
                     SearchView(viewModel: searchViewModel, purchasedProductViewModel: purchasedProductViewModel, itemDetail: viewModel.items)
                 case .help:
@@ -87,7 +85,7 @@ struct HomeView: View {
 
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
+    HomeView(viewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel(), profileViewModel: ProfileViewModel())
 }
 //MARK: -UI
 

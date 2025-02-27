@@ -32,10 +32,19 @@
 		CE85EB102CCD06A700F881BD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB0F2CCD06A700F881BD /* LoginViewModel.swift */; };
 		CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB112CCD0B8100F881BD /* PrimaryButton.swift */; };
 		CE85EB142CCD28A300F881BD /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85EB132CCD28A300F881BD /* SignupView.swift */; };
+		CEA5A9482D68C31C0069341A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5A9472D68C31C0069341A /* ProfileView.swift */; };
+		CEA5A94B2D6C62DE0069341A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CEA5A94A2D6C62DE0069341A /* FirebaseAuth */; };
+		CEA5A94D2D6C62DE0069341A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CEA5A94C2D6C62DE0069341A /* FirebaseCore */; };
+		CEA5A94F2D6C62DE0069341A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CEA5A94E2D6C62DE0069341A /* FirebaseDatabase */; };
+		CEA5A9512D6C62DE0069341A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEA5A9502D6C62DE0069341A /* FirebaseFirestore */; };
+		CEA5A9532D6C62DE0069341A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CEA5A9522D6C62DE0069341A /* FirebaseStorage */; };
+		CEA5A9562D6C64CE0069341A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5A9552D6C64CE0069341A /* FirebaseService.swift */; };
+		CEA5A9582D6F0E270069341A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5A9572D6F0E270069341A /* ProfileViewModel.swift */; };
 		CEB636D92D3156D60071C71E /* ShoppingCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB636D82D3156D60071C71E /* ShoppingCartView.swift */; };
 		CEB636DB2D3159C00071C71E /* PurchasedProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB636DA2D3159C00071C71E /* PurchasedProductsViewModel.swift */; };
 		CEB636DD2D315DCB0071C71E /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB636DC2D315DCB0071C71E /* ProductDetail.swift */; };
 		CEB9363F2D1055EE004BF5D7 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB9363E2D1055EE004BF5D7 /* SortOption.swift */; };
+		CEC3463E2D5B8552001E5513 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3463D2D5B8552001E5513 /* Router.swift */; };
 		CEC385F82CD2C69100A662BD /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC385F72CD2C69100A662BD /* InputTextField.swift */; };
 		CEC386002CD2CFC500A662BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC385FF2CD2CFC500A662BD /* SearchViewModel.swift */; };
 		CEC613DF2CD65B9600E96754 /* ExploreProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC613DE2CD65B9600E96754 /* ExploreProductsView.swift */; };
@@ -78,10 +87,14 @@
 		CE85EB0F2CCD06A700F881BD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CE85EB112CCD0B8100F881BD /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		CE85EB132CCD28A300F881BD /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		CEA5A9472D68C31C0069341A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CEA5A9552D6C64CE0069341A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		CEA5A9572D6F0E270069341A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CEB636D82D3156D60071C71E /* ShoppingCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartView.swift; sourceTree = "<group>"; };
 		CEB636DA2D3159C00071C71E /* PurchasedProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedProductsViewModel.swift; sourceTree = "<group>"; };
 		CEB636DC2D315DCB0071C71E /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		CEB9363E2D1055EE004BF5D7 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		CEC3463D2D5B8552001E5513 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CEC385F72CD2C69100A662BD /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CEC385FF2CD2CFC500A662BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		CEC613DE2CD65B9600E96754 /* ExploreProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreProductsView.swift; sourceTree = "<group>"; };
@@ -103,8 +116,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA5A94F2D6C62DE0069341A /* FirebaseDatabase in Frameworks */,
 				CE7C98712D0A22FB00F52BA6 /* Kingfisher in Frameworks */,
+				CEA5A94B2D6C62DE0069341A /* FirebaseAuth in Frameworks */,
+				CEA5A94D2D6C62DE0069341A /* FirebaseCore in Frameworks */,
+				CEA5A9532D6C62DE0069341A /* FirebaseStorage in Frameworks */,
 				CE7C986C2D09B47600F52BA6 /* Alamofire in Frameworks */,
+				CEA5A9512D6C62DE0069341A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +181,8 @@
 		CE85EAF12CCCF63900F881BD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CEA5A9542D6C63800069341A /* Firebase */,
+				CEC3463C2D5B8540001E5513 /* Routing */,
 				CE7C98672D09B38900F52BA6 /* Networking */,
 			);
 			path = Core;
@@ -176,6 +196,7 @@
 				CEFFB1DC2CD0EFD3008407A8 /* Search */,
 				CEC613DD2CD65B6A00E96754 /* Explore Products */,
 				CEE9BCF72CDA50E700315663 /* Product Detail */,
+				CEA5A9462D68C3010069341A /* Profile */,
 				CEB636D72D3156AB0071C71E /* Shoppinng Cart */,
 			);
 			path = Feature;
@@ -262,6 +283,23 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		CEA5A9462D68C3010069341A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CEA5A9472D68C31C0069341A /* ProfileView.swift */,
+				CEA5A9572D6F0E270069341A /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CEA5A9542D6C63800069341A /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CEA5A9552D6C64CE0069341A /* FirebaseService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		CEB636D72D3156AB0071C71E /* Shoppinng Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +308,14 @@
 				CE6BAD962D32AB69000FE697 /* PurchasedItem.swift */,
 			);
 			path = "Shoppinng Cart";
+			sourceTree = "<group>";
+		};
+		CEC3463C2D5B8540001E5513 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				CEC3463D2D5B8552001E5513 /* Router.swift */,
+			);
+			path = Routing;
 			sourceTree = "<group>";
 		};
 		CEC613DD2CD65B6A00E96754 /* Explore Products */ = {
@@ -339,6 +385,11 @@
 			packageProductDependencies = (
 				CE7C986B2D09B47600F52BA6 /* Alamofire */,
 				CE7C98702D0A22FB00F52BA6 /* Kingfisher */,
+				CEA5A94A2D6C62DE0069341A /* FirebaseAuth */,
+				CEA5A94C2D6C62DE0069341A /* FirebaseCore */,
+				CEA5A94E2D6C62DE0069341A /* FirebaseDatabase */,
+				CEA5A9502D6C62DE0069341A /* FirebaseFirestore */,
+				CEA5A9522D6C62DE0069341A /* FirebaseStorage */,
 			);
 			productName = "E-Commerce";
 			productReference = CE85EAE02CCCF4C400F881BD /* E-Commerce.app */;
@@ -371,6 +422,7 @@
 			packageReferences = (
 				CE7C986A2D09B47600F52BA6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CE7C986F2D0A22FB00F52BA6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CE85EAE12CCCF4C400F881BD /* Products */;
 			projectDirPath = "";
@@ -406,7 +458,9 @@
 				CEFFB1DE2CD0EFF0008407A8 /* SearchView.swift in Sources */,
 				CE7C98692D09B3B400F52BA6 /* ECommerceService.swift in Sources */,
 				CEF1646D2CCF860900D7E10C /* ScreenSizes.swift in Sources */,
+				CEC3463E2D5B8552001E5513 /* Router.swift in Sources */,
 				CE6BAD972D32AB69000FE697 /* PurchasedItem.swift in Sources */,
+				CEA5A9482D68C31C0069341A /* ProfileView.swift in Sources */,
 				CE2998DA2CD02F16007EF591 /* CategoryList.swift in Sources */,
 				CE85EB0A2CCD019000F881BD /* Fonts.swift in Sources */,
 				CEB9363F2D1055EE004BF5D7 /* SortOption.swift in Sources */,
@@ -423,6 +477,7 @@
 				CEC385F82CD2C69100A662BD /* InputTextField.swift in Sources */,
 				CE2998D42CD02A01007EF591 /* HomeViewModel.swift in Sources */,
 				CE6BAD992D32AD6C000FE697 /* ShoppingCart.swift in Sources */,
+				CEA5A9562D6C64CE0069341A /* FirebaseService.swift in Sources */,
 				CE85EB122CCD0B8100F881BD /* PrimaryButton.swift in Sources */,
 				CEB636DD2D315DCB0071C71E /* ProductDetail.swift in Sources */,
 				CEB636DB2D3159C00071C71E /* PurchasedProductsViewModel.swift in Sources */,
@@ -435,6 +490,7 @@
 				CE3E9DE12CDA9BFB004386DE /* ProductDetailViewModel.swift in Sources */,
 				CEE9BCF92CDA510500315663 /* ProductDetailView.swift in Sources */,
 				CE2998DC2CD03192007EF591 /* Banner.swift in Sources */,
+				CEA5A9582D6F0E270069341A /* ProfileViewModel.swift in Sources */,
 				CE85EB042CCCFC3C00F881BD /* LoginView.swift in Sources */,
 				CE85EAE42CCCF4C400F881BD /* E_CommerceApp.swift in Sources */,
 			);
@@ -662,6 +718,14 @@
 				minimumVersion = 8.1.2;
 			};
 		};
+		CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -674,6 +738,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE7C986F2D0A22FB00F52BA6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		CEA5A94A2D6C62DE0069341A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CEA5A94C2D6C62DE0069341A /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		CEA5A94E2D6C62DE0069341A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		CEA5A9502D6C62DE0069341A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CEA5A9522D6C62DE0069341A /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA5A9492D6C62DD0069341A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -15,3 +15,8 @@ enum Destination: Hashable {
     case seeAll
     case detail
 }
+
+enum LoginDestionation: Hashable {
+    case home
+    case signup
+}

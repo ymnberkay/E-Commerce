@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject  var viewModel: LoginViewModel
+    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     @StateObject var homeViewModel: HomeViewModel
     @StateObject var searchViewModel: SearchViewModel
     @StateObject var exploreProductsViewModel: ExploreProductsViewModel
     @StateObject var productDetailViewModel: ProductDetailViewModel
     @StateObject var purchasedProductViewModel: PurchasedProductsViewModel
+    @StateObject var profileViewModel: ProfileViewModel
     
     var body: some View {
-        NavigationStack {
+        if viewModel.isUserLoggedIn {
+            HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel, productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel, profileViewModel: profileViewModel)
+        } else {
             ZStack {
                 Image("mainImage")
                     .resizable()
@@ -41,6 +44,8 @@ struct LoginView: View {
                             .foregroundColor(.gray)
                             .font(.customFont(size: FontSizes.caption1))
                             .padding(.leading, 8)
+                            .autocorrectionDisabled()
+                        
                     }
                     .padding()
                     .background(Color.white)
@@ -68,8 +73,7 @@ struct LoginView: View {
                     })
                     .padding(.vertical,0)
                     PrimaryButton(title: "Sign In", action: {
-                        viewModel.isLoggedIn = true
-                        viewModel.login(username: viewModel.emailValue, password: viewModel.passwordValue)
+                        viewModel.loginFirebase(email: viewModel.emailValue, password: viewModel.passwordValue)
                     })
                     .padding(.vertical,0)
                     HStack(spacing: 0) {
@@ -81,7 +85,7 @@ struct LoginView: View {
                             .foregroundColor(.primaryColor)
                             .underline()
                             .onTapGesture {
-                                viewModel.isLoggedIn = true
+                                viewModel.showSignUp = true
                             }
                     }
                     .padding(.top,20)
@@ -91,15 +95,21 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.isLoggedIn){
-                SignupView(homeViewModel: homeViewModel, searchViewModel: searchViewModel,exploreProductsViewModel: exploreProductsViewModel,productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel)
+                HomeView(viewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel, productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel, profileViewModel: profileViewModel)
             }
-        }.onAppear(perform: {
-            viewModel.isLoggedIn = false
-            print("login view appeared")
-        })
+            .navigationDestination(isPresented: $viewModel.showSignUp) {
+                
+                SignupView(homeViewModel: homeViewModel, searchViewModel: searchViewModel, exploreProductsViewModel: exploreProductsViewModel, productDetailViewModel: productDetailViewModel, purchasedProductViewModel: purchasedProductViewModel, profileViewModel: profileViewModel)
+            }
+            .onAppear(perform: {
+                viewModel.isLoggedIn = false
+                print("login view appeared")
+            })
+
+        }
     }
 }
 
 #Preview {
-    LoginView(viewModel: LoginViewModel(), homeViewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel())
+    LoginView(viewModel: LoginViewModel(), homeViewModel: HomeViewModel(service: ECommerceService()), searchViewModel: SearchViewModel(), exploreProductsViewModel: ExploreProductsViewModel(), productDetailViewModel: ProductDetailViewModel(service: ECommerceService()), purchasedProductViewModel: PurchasedProductsViewModel(), profileViewModel: ProfileViewModel())
 }

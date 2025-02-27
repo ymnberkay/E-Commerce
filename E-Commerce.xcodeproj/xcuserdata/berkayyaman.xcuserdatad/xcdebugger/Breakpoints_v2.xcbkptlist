@@ -50,6 +50,50 @@
             endingLineNumber = "41"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "DB0E9F71-1B7C-430A-8277-6AF38A9D8D7B - 7ad946495369874"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in E_Commerce.ProductDetailView.body.getter : some"
+                  moduleName = "E-Commerce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/berkayyaman/Desktop/E-Commerce/E-Commerce/Feature/Product%20Detail/ProductDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41">
+               </Location>
+               <Location
+                  uuid = "DB0E9F71-1B7C-430A-8277-6AF38A9D8D7B - e6c7c0f8164cdb2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in E_Commerce.ProductDetailView.body.getter : some"
+                  moduleName = "E-Commerce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/berkayyaman/Desktop/E-Commerce/E-Commerce/Feature/Product%20Detail/ProductDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41">
+               </Location>
+               <Location
+                  uuid = "DB0E9F71-1B7C-430A-8277-6AF38A9D8D7B - d2e1d769fecfd476"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #2 () -&gt; () in E_Commerce.ProductDetailView.body.getter : some"
+                  moduleName = "E-Commerce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/berkayyaman/Desktop/E-Commerce/E-Commerce/Feature/Product%20Detail/ProductDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
