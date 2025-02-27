@@ -94,6 +94,7 @@ struct EmailView: View {
                 .foregroundColor(.gray)
                 .font(.customFont(size: FontSizes.caption1))
                 .padding(.leading, 8)
+                .autocapitalization(.none)
         }
         .padding()
         .background(Color.white)

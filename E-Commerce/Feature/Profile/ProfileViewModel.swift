@@ -10,19 +10,40 @@ import SwiftUI
 import FirebaseAuth
 
 final class ProfileViewModel: ObservableObject {
-    @AppStorage("isUserLoggedIn") private var isUserLoggedIn: Bool = false
+    @AppStorage("isUserLoggedIn") var isUserLoggedIn: Bool = false
+    @Published var email: String?
+    @Published var name: String?
+    @Published var surname: String?
+    @Published var wishList: [ItemDetail]?
+    @Published var currentUser: FirebaseAuth.User?
     
     func logOut() {
         do {
             try Auth.auth().signOut()
             DispatchQueue.main.async {
                 self.isUserLoggedIn = false
+                print("\(Auth.auth().currentUser) logout")
             }
         } catch {
             print("Logout fail")
         }
+    }
+    
+    func getCurrentUser() {
+        currentUser = Auth.auth().currentUser
+        self.email = currentUser?.email
+    }
+    
+    
+    func editName() {
         
+    }
+    
+    func addWishList() {
         
+    }
+    
+    func editProfilePic() {
         
     }
 }

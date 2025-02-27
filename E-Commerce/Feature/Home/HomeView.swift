@@ -22,7 +22,7 @@ struct HomeView: View {
             TopView(viewModel: viewModel)
             VStack(spacing: -20) {
                 HStack {
-                    Text("Hi, Andrea")
+                    Text("Hi, \(profileViewModel.name ?? "Berkay")")
                         .font(.customFont(size: FontSizes.headline))
                     Spacer()
                 }.padding()
@@ -99,11 +99,12 @@ struct TopView: View {
             Spacer()
             Image("logo")
             Spacer()
-            Image("asd")
+            Image("placeholderhp")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40)
                 .background(Circle()
-                    .stroke(lineWidth: 1.0)
-                    .frame(width: 32, height: 32))
-                .padding()
+                    .stroke(lineWidth: 1.0))
             
         }.padding()
     }

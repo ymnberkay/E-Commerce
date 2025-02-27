@@ -45,6 +45,7 @@ struct LoginView: View {
                             .font(.customFont(size: FontSizes.caption1))
                             .padding(.leading, 8)
                             .autocorrectionDisabled()
+                            .autocapitalization(.none)
                         
                     }
                     .padding()
