@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 
 final class LoginViewModel: ObservableObject {
@@ -17,6 +18,8 @@ final class LoginViewModel: ObservableObject {
     @Published var showSignUp: Bool = false
     @Published var errorMessage: String?
     @Published var selectedDestination: Destination?
+    
+    
     
     func loginFirebase(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in

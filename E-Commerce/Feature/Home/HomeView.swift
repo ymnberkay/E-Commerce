@@ -56,6 +56,7 @@ struct HomeView: View {
             Task {
                 await viewModel.fetchProducts()
             }
+            profileViewModel.fetchUserData()
             viewModel.isPresented = false
         })
         

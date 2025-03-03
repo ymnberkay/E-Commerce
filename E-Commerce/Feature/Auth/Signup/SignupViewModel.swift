@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 
 final class SignupViewModel: ObservableObject {
@@ -16,6 +17,8 @@ final class SignupViewModel: ObservableObject {
     @Published var isSignup: Bool = false
     @Published var errorMessage: String?
     
+    let dbFirestore = Firestore.firestore()
+    
     func createUserFirebase(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -23,13 +26,34 @@ final class SignupViewModel: ObservableObject {
                 print(self.errorMessage)
             } else {
                 DispatchQueue.main.async {
+                    guard let user = authResult?.user else {
+                        return
+                    }
                     self.isSignup = true
                     self.isUserLoggedIn = true
                     print(self.isSignup)
+                    self.createUserFirestore(user: user)
                 }
+                
             }
             
         }
         
+    }
+    
+    func createUserFirestore(user: FirebaseAuth.User) {
+        let userData: [String: Any] = [
+            "email": user.email ?? "",
+            "createdAt": Timestamp()
+        ]
+        
+        dbFirestore.collection("users").document(user.uid).setData(userData) { error in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            } else {
+                print("\(user.uid)")
+            }
+        
+        }
     }
 }

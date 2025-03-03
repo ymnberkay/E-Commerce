@@ -14,6 +14,9 @@ struct ProfileView: View {
             NavigationTopBarView()
             ListView(viewModel: viewModel)
         }.navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $viewModel.showEditProfile, destination: {
+                EditProfileView(viewModel: viewModel)
+            })
     }
 }
 
@@ -49,21 +52,20 @@ private struct ListView: View {
                     .scaledToFit()
                     .frame(width: 80, height: 80)
                     .clipShape(Circle())
-
+                
                 VStack(alignment: .leading) {
                     Text("\(viewModel.name ?? "Berkay") \(viewModel.surname ?? "YAMAN")")
                         .font(.customFont(size: FontSizes.caption1))
                     Text(viewModel.email ?? "ymnberkayy@gmail.com")
                         .opacity(0.5)
                         .font(.customFont(size: FontSizes.caption1))
-                        
-                    
                 }
             }
+            
             Section(header: Text("General").font(.customFont(size: FontSizes.caption1))) {
                 
                 Button {
-                    
+                    viewModel.showEditProfile = true
                 } label: {
                     Text("Edit profile")
                         .font(.customFont(size: FontSizes.caption1))
@@ -108,6 +110,7 @@ private struct ListView: View {
                     Text("Report a Bug")
                         .font(.customFont(size: FontSizes.caption1))
                 }.buttonStyle(PlainButtonStyle())
+                
                 Button {
                     viewModel.logOut()
                 } label: {
@@ -119,6 +122,7 @@ private struct ListView: View {
             }
             
         }
+        
         .onAppear {
             viewModel.getCurrentUser()
         }
