@@ -29,7 +29,12 @@
 - **Kingfisher**: Handles image loading and caching.
 
 ---
+## UI/UX Design (Figma)
 
+You can access the UI design of the E-Commerce application on Figma :  
+🔗 **[Figma Design Link](https://www.figma.com/design/o6BDUdZsOQbI7l1gaijXCK/E-Commerce-UI-Kit-V1.1-(Community)?node-id=0-1&t=d1E2qMW86UO5qoQy-1)**
+
+---
 ## API and Data Management
 
 ### Mocky API Usage:
@@ -122,13 +127,13 @@
 ---
 ## Screenshots
 
-<img src="https://github.com/user-attachments/assets/25e84486-bb19-4694-ad07-4d149745187f" alt="Login" width="400">
-<img src="https://github.com/user-attachments/assets/e7972737-a0a6-43bd-93fa-01344a2d1f09" alt="Signup" width="400">
-<img src="https://github.com/user-attachments/assets/d914fb71-5778-4f16-9d0a-3aa06d41b264" alt="Home" width="400">
-<img src="https://github.com/user-attachments/assets/815f62a5-bf06-4779-97c1-0600f91c2980" alt="Detail" width="400">
-<img src="https://github.com/user-attachments/assets/cd2eea63-200d-46dc-ad65-0a649a7f192b" alt="Profile" width="400">
-<img src="https://github.com/user-attachments/assets/a0a1dc20-5de3-4d30-a339-fda2b1453e90" alt="Shopping" width="400">
-<img src="https://github.com/user-attachments/assets/f1941b7a-36d1-43ee-a33b-5d0fc8d15d82" alt="AllData" width="400">
+<img src="https://github.com/user-attachments/assets/25e84486-bb19-4694-ad07-4d149745187f" alt="Login" width="300">
+<img src="https://github.com/user-attachments/assets/e7972737-a0a6-43bd-93fa-01344a2d1f09" alt="Signup" width="300">
+<img src="https://github.com/user-attachments/assets/d914fb71-5778-4f16-9d0a-3aa06d41b264" alt="Home" width="300">
+<img src="https://github.com/user-attachments/assets/815f62a5-bf06-4779-97c1-0600f91c2980" alt="Detail" width="300">
+<img src="https://github.com/user-attachments/assets/cd2eea63-200d-46dc-ad65-0a649a7f192b" alt="Profile" width="300">
+<img src="https://github.com/user-attachments/assets/a0a1dc20-5de3-4d30-a339-fda2b1453e90" alt="Shopping" width="300">
+<img src="https://github.com/user-attachments/assets/f1941b7a-36d1-43ee-a33b-5d0fc8d15d82" alt="AllData" width="300">
 
 ## Installation and Setup
 
